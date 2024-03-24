@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -240,6 +240,20 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
+  -- Vimtex for latex editing
+  {
+    'lervag/vimtex',
+    init = function() -- Use init for configuration, don't use the more common "config".
+    end,
+  },
+
+  -- vim-pencil for text editing
+  {
+    'preservim/vim-pencil',
+    init = function()
+      vim.g['pencil#wrapModeDefault'] = 'soft'
+    end,
+  },
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
   --    require('gitsigns').setup({ ... })

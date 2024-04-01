@@ -98,6 +98,10 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- spell default on
+vim.opt.spelllang = 'en_gb'
+vim.opt.spell = true
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -246,10 +250,36 @@ require('lazy').setup({
     init = function() -- Use init for configuration, don't use the more common "config".
     end,
   },
-
+  -- Zen-mode for focus
+  {
+    'folke/zen-mode.nvim',
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
+  -- Twilight for dimming non relevant text/code
+  {
+    'folke/twilight.nvim',
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
+  -- markdown
+  {
+    'tadmccorkle/markdown.nvim',
+    ft = 'markdown', -- or 'event = "VeryLazy"'
+    opts = {
+      -- configuration here or empty for defaults
+    },
+  },
   -- vim-pencil for text editing
   {
     'preservim/vim-pencil',
+    -- ft = { 'text' },
     init = function()
       vim.g['pencil#wrapModeDefault'] = 'soft'
     end,

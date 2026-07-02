@@ -406,6 +406,23 @@ do
 
   -- ... and there is more!
   --  Check out: https://github.com/nvim-mini/mini.nvim
+
+  vim.pack.add { gh 'folke/zen-mode.nvim' }
+  -- ZEN MODE CONFIGURATION
+  require('zen-mode').setup({
+    window = {
+      width = 90,
+      options = {
+        signcolumn = "no",
+        number = false,
+        relativenumber = false,
+      },
+    },
+    plugins = {
+      twilight = { enabled = true }, 
+    },
+  })
+
 end
 
 -- ============================================================

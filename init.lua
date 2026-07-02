@@ -1,10 +1,13 @@
--- 1. Declare the variable at the file level (outside any blocks)
+-- JDB Declare the variable at the file level (outside any blocks)
 local is_travel_machine = false
 
--- 2. Run your check to flip it if on the Pi
+-- JDB Run check to flip it if on the Pi
 if os.getenv('TRAVEL_ENV') then
   is_travel_machine = true
 end
+
+-- JDB Prepend the local site directory to Neovim's internal runtimepath
+vim.opt.rtp:prepend(vim.fn.stdpath("data") .. "/site")
 
 -- ============================================================
 -- SECTION 1: OPTIONS
@@ -407,6 +410,7 @@ do
   -- ... and there is more!
   --  Check out: https://github.com/nvim-mini/mini.nvim
 
+  -- JDB Zen mode
   vim.pack.add { gh 'folke/zen-mode.nvim' }
   -- ZEN MODE CONFIGURATION
   require('zen-mode').setup({

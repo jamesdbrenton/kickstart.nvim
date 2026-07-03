@@ -1,9 +1,10 @@
 -- JDB Declare the variable at the file level (outside any blocks)
-local is_travel_machine = false
+-- local is_low_power = false # power saving flag
+local has_no_gui = false -- no GUI e.g. raspberry pi zero 2 
 
 -- JDB Run check to flip it if on the Pi
-if os.getenv('TRAVEL_ENV') then
-  is_travel_machine = true
+if os.getenv('HASNOGUI') then
+  has_no_gui = true
 end
 
 -- JDB Prepend the local site directory to Neovim's internal runtimepath
@@ -52,7 +53,7 @@ do
   --  Remove this option if you want your OS clipboard to remain independent.
   --  See `:help 'clipboard'`
   --  but not on headless raspberry pi zero 2
-  if is_travel_machine then
+  if has_no_gui then
     -- 1. Setup the OSC 52 handler cleanly (without overriding system defaults)
     vim.g.clipboard = {
       name = 'OSC 52',

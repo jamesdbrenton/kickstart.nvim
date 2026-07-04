@@ -413,6 +413,7 @@ do
 
   -- JDB Zen mode
   vim.pack.add { gh 'folke/zen-mode.nvim' }
+  vim.pack.add { gh 'folke/twilight.nvim' }
   -- ZEN MODE CONFIGURATION
   require('zen-mode').setup({
     window = {
@@ -426,6 +427,19 @@ do
     plugins = {
       twilight = { enabled = true }, 
     },
+  })
+
+  -- Initialize the pure-lua wrapping plugin
+  vim.pack.add { gh 'andrewferrier/wrapping.nvim' }
+  require("wrapping").setup({
+    -- By default, it creates keymaps: 
+    -- [ow for soft wrap mode, ]ow for hard wrap mode, yow to toggle
+    create_keymaps = true,
+    -- Force typst to always default directly to soft wrap text editing
+    softener = {
+      typst = true,
+      markdown = true,
+    }
   })
 
 end

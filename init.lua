@@ -735,6 +735,23 @@ do
     },
   }
 
+  -- JDB avoid adding tinymist or other more expensive LSP on low power machines
+  -- Adds tinymist to Mason auto-install & setup loop
+  if not has_no_gui then
+    servers.tinymist = {
+      settings = {
+        -- Automatically export PDF on save (options: "never", "onSave", "onType")
+        exportPdf = "onSave",
+        -- Use the faster and modern 'typstyle' for formatting if you invoke it
+        formatterMode = "typstyle",
+        -- Control preview color behavior
+        preview = {
+          invertColors = "never", -- Change to "always" or "auto" if you prefer dark mode previews
+        }
+      }
+    }
+  end
+
   vim.pack.add {
     gh 'neovim/nvim-lspconfig',
     gh 'mason-org/mason.nvim',
